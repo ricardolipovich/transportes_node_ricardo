@@ -1,16 +1,21 @@
 <div class="container margenes">
     <div class="row">
         <div class="col">
-            <div class="mb-3">
+            <form action="/admin/login" method="post">
+                <div class="mb-3">
 
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Usuario">
-            </div>
-            <div class="mb-3">
-                <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Contraseña">
-            </div>
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">Ingresar</button>
-            </div>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Usuario" name="usuario">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Contraseña" name="password">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Ingresar</button>
+                </div>
+            </form>
+            {{#if error}}
+            <p>usuario y/o Contraseña incorrecta</p>
+            {{/if}}
         </div>
     </div>
 </div>
