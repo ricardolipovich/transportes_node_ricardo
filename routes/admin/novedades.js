@@ -11,7 +11,16 @@ router.get('/', async function(req,res,netx){
         persona:req.session.nombre, novedades 
         
         // admin/layout.hbs
-    }); //view/admin/novedades.hbs
+    });
+    
+});
+
+router.get('/agregar', ( req, res, next) => {
+    res.render('admin/agregar', {
+        layout: 'admin/layout'
+    })
 })
 
+
 module.exports = router;
+
