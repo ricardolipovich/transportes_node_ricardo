@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var novedadesModel = require('../models/novedadesModel');
 
-router.get('/', function(req,res,netx){
+router.get('/', async function(req,res,netx){
+
+    var novedades = await novedadesModel.getNovedades();
+
     res.render('novedades',{
-        isNovedades:true
+        isNovedades:true,
+        novedades
     }); //view/novedades.hbs
 })
 
