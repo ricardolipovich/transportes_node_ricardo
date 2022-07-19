@@ -34,13 +34,18 @@ async function getNovedadesByID(id) {
 async function modificarNovedadByID(obj,id){
     try{
         var query = 'update novedades set ? where id= ?'
-        var row = await pool.query(query,[obj, id]);
-        return row;
+        var rows = await pool.query(query,[obj, id]);
+        return rows;
 
     }catch(error){
         throw error;
     }
 }
 
+async function buscarNovedades(busqueda){
+    var query = 'select * from novedades where titulo like ? OR subtitulo like ? OR cuerpo like ?';
+    var rows = await pool.query(query, ['%' + busqueda + '%', '%' + busqueda + '%', '%' + busqueda + '%']);
+    return rows;
+}
 
-module.exports = { getNovedades, insertNovedades, deleteNovedadByID, getNovedadesByID, modificarNovedadByID }
+module.exports = { getNovedades, insertNovedades, deleteNovedadByID, getNovedadesByID, modificarNovedadByID, buscarNovedades }
